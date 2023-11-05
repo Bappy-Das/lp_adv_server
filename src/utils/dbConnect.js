@@ -9,7 +9,7 @@ const connectToDatabase = async () => {
             useUnifiedTopology: true,
         });
         const db = mongoose.connection;
-        console.log("Database Conneted to server".red.bold);
+        console.log("Database Conneted to server".blue.bold);
         db.on('error', console.error.bind(console, 'MongoDB connection error:'));
         db.once('open', () => {
             console.log('Connected to the database');

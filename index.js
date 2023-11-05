@@ -5,11 +5,13 @@ var colors = require('colors');
 const mongoose = require("mongoose");
 const connectToDatabase = require("./src/utils/dbConnect");
 
+const userRoute = require("./src/routes/v1/users.route");
 const app = express();
 const port = process.env.PORT || 5000;
 
 app.use(express.json());
 app.use(cors());
+
 
 
 try {
@@ -24,6 +26,7 @@ try {
 app.get("/", (req, res) => {
     res.send("Server is on running !")
 });
+app.use("/api/v1/user", userRoute);
 
 app.all("*", (req, res) => {
     res.send("No route found.");
