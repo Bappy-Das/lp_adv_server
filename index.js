@@ -5,6 +5,8 @@ var colors = require('colors');
 const mongoose = require("mongoose");
 const connectToDatabase = require("./src/utils/dbConnect");
 
+const crypto = require('crypto');
+
 const userRoute = require("./src/routes/v1/users.route");
 const app = express();
 const port = process.env.PORT || 5000;
@@ -24,7 +26,12 @@ try {
     console.log(error);
 }
 app.get("/", (req, res) => {
-    res.send("Server is on running !")
+    // res.send("Server is on running !")
+    // const randomBytes = crypto.randomBytes(64).toString('hex');
+    res.json({
+        status: "Success",
+        message: "Server is on running ",
+    })
 });
 app.use("/api/v1/user", userRoute);
 
