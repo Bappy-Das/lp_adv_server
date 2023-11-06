@@ -4,10 +4,11 @@ const { generateToken } = require("../utils/token");
 exports.signUp = async (req, res) => {
     try {
         const user = await signUpService(req.body);
+        const { password: pwd, ...othersData } = user.toObject();
         res.status(200).json({
             status: "success",
             messgae: "User created successfully!",
-            data: user,
+            data: othersData,
         });
 
     } catch (error) {
@@ -18,6 +19,11 @@ exports.signUp = async (req, res) => {
         });
     }
 }
+
+// For multiline comment use keyboard shortcut shift+alt+a
+// for the pointer after multiline use extra *
+
+
 
 /**
  * check email and password are given
@@ -62,8 +68,6 @@ exports.login = async (req, res) => {
         }
         const token = generateToken(user);
         const { password: pwd, ...othersData } = user.toObject();
-
-
 
         res.status(200).json({
             status: "success",
