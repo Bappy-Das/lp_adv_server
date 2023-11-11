@@ -86,3 +86,21 @@ exports.login = async (req, res) => {
         });
     }
 }
+
+// user persistance
+exports.getMe = async (req, res) => {
+    try {
+        const user = await findUserBYEmail(req.user?.email);
+        const { password: pwd, ...othersData } = user.toObject();
+        res.status(200).json({
+            status: "success",
+            data: othersData
+        });
+
+    } catch (error) {
+        res.status(500).json({
+            status: "fail",
+            error,
+        })
+    }
+}
