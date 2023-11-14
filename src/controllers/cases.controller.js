@@ -1,4 +1,4 @@
-const { newCaseService } = require("../services/cases.service");
+const { newCaseService, getAllCaseService } = require("../services/cases.service");
 
 exports.createCase = async (req, res) => {
     try {
@@ -13,6 +13,23 @@ exports.createCase = async (req, res) => {
         res.status(400).json({
             status: "fail",
             message: "Couldn't create new case ! ",
+            error: error.message,
+        });
+    }
+}
+exports.allCase = async (req, res) => {
+    try {
+        const cases = await getAllCaseService();
+        res.status(200).json({
+            status: "success",
+            messgae: "Case found successfully!",
+            data: cases,
+        });
+
+    } catch (error) {
+        res.status(400).json({
+            status: "fail",
+            message: "Couldn't found data ! ",
             error: error.message,
         });
     }

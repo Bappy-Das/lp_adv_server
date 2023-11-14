@@ -120,3 +120,21 @@ exports.getAllUsers = async (req, res) => {
         })
     }
 }
+exports.logout = async (req, res, next) => {
+    try {
+        req.session.destroy((err) => {
+            if (err) {
+                throw err;
+            }
+            res.status(200).json({
+                status: "success",
+                message: "Logout successful",
+            });
+        });
+    } catch (error) {
+        res.status(500).json({
+            status: "fail",
+            error,
+        });
+    }
+};

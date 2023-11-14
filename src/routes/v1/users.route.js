@@ -7,6 +7,7 @@ router.post("/signup", userController.signUp);
 router.post("/login", userController.login);
 router.get("/me", verifyToken, userController.getMe);
 router.get("/get-user", verifyToken, userController.getAllUsers);
+router.get("/logout", userController.logout);
 
 
 // suppose authorization route setup be like
