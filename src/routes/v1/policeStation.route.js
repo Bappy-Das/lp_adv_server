@@ -2,6 +2,6 @@ const policeStationController = require("../../controllers/policeStation.control
 const express = require("express");
 const router = express.Router();
 
-router.post("/new-case", policeStationController.newPoliceStation);
+router.post("/new-police-station", policeStationController.newPoliceStation);
 
 module.exports = router;

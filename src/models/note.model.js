@@ -1,14 +1,15 @@
 const mongoose = require("mongoose");
 
-const noteSchema = mongoose.Schema({
-    note: {
+const todoSchema = mongoose.Schema({
+    description: {
         type: String,
-        trim: true,
-        require: [true, "Please provide note first"]
+        required: [true, "Please provide a full description"],
+        trim: true
     }
+
 }, {
-    timestamps: true
+    timestamps: true,
 });
 
-const Note = mongoose.Schema("Note", noteSchema);
-module.exports = Note;
+const TodosNote = mongoose.model("TodosNote", todoSchema);
+module.exports = TodosNote;

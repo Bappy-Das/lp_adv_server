@@ -11,4 +11,7 @@ exports.loginService = async (userinfo) => {
 exports.findUserBYEmail = async (email) => {
     return await User.findOne({ email });
 }
+exports.getAllUsers = async () => {
+    return await User.find();
+}
 
