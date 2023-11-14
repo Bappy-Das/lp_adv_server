@@ -1,4 +1,4 @@
-const { newNoteService } = require("../services/note.service");
+const { newNoteService, getAllNoteService } = require("../services/note.service");
 
 exports.newNote = async (req, res) => {
     try {
@@ -13,6 +13,23 @@ exports.newNote = async (req, res) => {
         res.status(400).json({
             status: "fail",
             message: "Couldn't create note ! ",
+            error: error.message,
+        });
+    }
+}
+exports.getAllNote = async (req, res) => {
+    try {
+        const note = await getAllNoteService();
+        res.status(200).json({
+            status: "success",
+            messgae: "data found successfully!",
+            data: note,
+        });
+
+    } catch (error) {
+        res.status(400).json({
+            status: "fail",
+            message: "Couldn't found data ! ",
             error: error.message,
         });
     }

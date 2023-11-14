@@ -7,6 +7,7 @@ const todoNote = require("./note.route");
 
 
 const routes = [
+    // create and get
     {
         path: "user",
         router: user,
@@ -15,18 +16,22 @@ const routes = [
         path: "cases",
         router: cases,
     },
+    // create and get
     {
         path: "casetype",
         router: casetype,
     },
+    // create and get
     {
         path: "court",
         router: court,
     },
+    // create and get
     {
         path: "police-station",
         router: policeStation,
     },
+    // create and get
     {
         path: "todo-note",
         router: todoNote,
